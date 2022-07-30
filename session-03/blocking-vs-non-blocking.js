@@ -1,6 +1,37 @@
 const{
     readFileSync,
     writeFileSync,
+} = require('fs')
+
+const {
+    join, 
+} = require('path')
+
+const copyFileBlocking = (source, dest) =>{
+    console.log('Lendo blocking conteudo')
+    const content = readFileSync(source)
+    console.log('Escrevendo blocking conteudo')
+    writeFileSync(content)
+
+}
+
+const sourcePath = join (__dirname, 'files', 'example.txt')
+const destPath = join (__dirname, 'files', 'example.copy.blocking.txt')
+
+copyFileBlocking(sourcePath, destPath)
+
+
+
+
+
+
+
+
+
+
+/*   const{
+    readFileSync,
+    writeFileSync,
     readFile, 
     writeFile,
 } = require('fs')
@@ -13,7 +44,7 @@ const logDuration = (label, startTime) => {
     console.log(`${label} levou ${Date.now() - startTime}ms`)
 }
 
-const copyFileBlocking = (source) => {
+const copyFileBlocking = (source, dest) => {
     const startTime = Date.now()
     console.log('Lendo blocking conteudo')
     const content = readFileSync(source)
@@ -50,4 +81,4 @@ const destPathNonBlocking = join(__dirname,'files', 'example.copy.non-blocking.t
 
 copyFileNonBlocking(sourcePath,destPathNonBlocking)
 
-console.log('Terminou mesmo?')
+console.log('Terminou mesmo?')*/
